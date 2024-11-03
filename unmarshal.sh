@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+NO_ERROR=0
 ERROR_UNSUPPORTED_DOCUMENT_TYPE=1
 ERROR_UNSUPPORTED_PROPERTY_TYPE=2
 ERROR_MISSING_JQ=100
@@ -40,6 +40,8 @@ unmarshal() {
             ;;
         esac
     done
+
+    return $NO_ERROR
 }
 
 require_jq() {

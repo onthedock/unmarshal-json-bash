@@ -28,7 +28,7 @@ EOF
     got=$(unmarshal doc.json)
     exit_code=$?
 
-    if [ $exit_code -eq 1 ]; then echo "[OK] ${FUNCNAME[0]}: $got"; else echo "[KO] ${FUNCNAME[0]}"; fi
+    if [ $exit_code -eq $ERROR_UNSUPPORTED_DOCUMENT_TYPE ]; then echo "[OK] ${FUNCNAME[0]}: $got"; else echo "[KO] ${FUNCNAME[0]}"; fi
     # Clean up
     unset exit_code got
 }
@@ -42,7 +42,7 @@ EOF
     got=$(unmarshal doc.json)
     exit_code=$?
 
-    if [ $exit_code -eq 1 ]; then echo "[OK] ${FUNCNAME[0]}: $got"; else echo "[KO] ${FUNCNAME[0]}"; fi
+    if [ $exit_code -eq $ERROR_UNSUPPORTED_DOCUMENT_TYPE ]; then echo "[OK] ${FUNCNAME[0]}: $got"; else echo "[KO] ${FUNCNAME[0]}"; fi
     # Clean up
     unset exit_code got
 }
@@ -56,7 +56,7 @@ EOF
     got=$(unmarshal doc.json)
     exit_code=$?
 
-    if [ $exit_code -eq 1 ]; then echo "[OK] ${FUNCNAME[0]}: $got"; else echo "[KO] ${FUNCNAME[0]}"; fi
+    if [ $exit_code -eq $ERROR_UNSUPPORTED_DOCUMENT_TYPE ]; then echo "[OK] ${FUNCNAME[0]}: $got"; else echo "[KO] ${FUNCNAME[0]}"; fi
     # Clean up
     unset exit_code got
 }
@@ -70,7 +70,7 @@ EOF
     got=$(unmarshal doc.json)
     exit_code=$?
 
-    if [ $exit_code -eq 1 ]; then echo "[OK] ${FUNCNAME[0]}: $got"; else echo "[KO] ${FUNCNAME[0]}"; fi
+    if [ $exit_code -eq $ERROR_UNSUPPORTED_DOCUMENT_TYPE ]; then echo "[OK] ${FUNCNAME[0]}: $got"; else echo "[KO] ${FUNCNAME[0]}"; fi
     # Clean up
     unset exit_code got
 }
@@ -84,7 +84,7 @@ EOF
     got=$(unmarshal doc.json)
     exit_code=$?
 
-    if [ $exit_code -eq 1 ]; then echo "[OK] ${FUNCNAME[0]}: $got"; else echo "[KO] ${FUNCNAME[0]}"; fi
+    if [ $exit_code -eq $ERROR_UNSUPPORTED_DOCUMENT_TYPE ]; then echo "[OK] ${FUNCNAME[0]}: $got"; else echo "[KO] ${FUNCNAME[0]}"; fi
     # Clean up
     unset exit_code got
 }
@@ -98,7 +98,7 @@ EOF
     _=$(unmarshal doc.json)
     exit_code=$?
 
-    if [ $exit_code -eq 0 ]; then echo "[OK] ${FUNCNAME[0]}"; else echo "[NOT PASSED!] ${FUNCNAME[0]}"; fi
+    if [ $exit_code -eq $NO_ERROR ]; then echo "[OK] ${FUNCNAME[0]}"; else echo "[NOT PASSED!] ${FUNCNAME[0]}"; fi
     # Clean up
     unset exit_code got
 }
@@ -114,7 +114,7 @@ EOF
     got="$mykey"
     exit_code=$?
 
-    if [ $exit_code -eq 0 ] && [[ "$want" == "$got" ]]; then
+    if [ $exit_code -eq $NO_ERROR ] && [[ "$want" == "$got" ]]; then
         echo "[OK] ${FUNCNAME[0]}: got 'mykey' set to '$got'"
     else
         echo "[NOT PASSED!] ${FUNCNAME[0]}"
@@ -135,7 +135,7 @@ EOF
     got="$mykey"
     exit_code=$?
 
-    if [ $exit_code -eq 0 ] && [[ "$want" == "$got" ]]; then
+    if [ $exit_code -eq $NO_ERROR ] && [[ "$want" == "$got" ]]; then
         echo "[OK] ${FUNCNAME[0]}: got 'mykey' set to '$got'"
     else
         echo "[NOT PASSED!] ${FUNCNAME[0]}"
@@ -156,7 +156,7 @@ EOF
     got="$mykey"
     exit_code=$?
 
-    if [ $exit_code -eq 0 ] && [[ "$want" == "$got" ]]; then
+    if [ $exit_code -eq $NO_ERROR ] && [[ "$want" == "$got" ]]; then
         echo "[OK] ${FUNCNAME[0]}: got 'mykey' set to '$got'"
     else
         echo "[NOT PASSED!] ${FUNCNAME[0]}"
@@ -177,7 +177,7 @@ EOF
     got="$mykey"
     exit_code=$?
 
-    if [ $exit_code -eq 0 ] && [[ "$want" == "$got" ]]; then
+    if [ $exit_code -eq $NO_ERROR ] && [[ "$want" == "$got" ]]; then
         echo "[OK] ${FUNCNAME[0]}: got 'mykey' set to '$got'"
     else
         echo "[NOT PASSED!] ${FUNCNAME[0]}"
@@ -198,7 +198,7 @@ EOF
     expect=("one" "two" "three")
     exit_code=$?
 
-    if [ $exit_code -eq 0 ] && [[ "${expect[@]}" == "${mykey[@]}" ]]; then
+    if [ $exit_code -eq $NO_ERROR ] && [[ "${expect[@]}" == "${mykey[@]}" ]]; then
         echo "[OK] ${FUNCNAME[0]}: got 'mykey' set to '${mykey[@]}'"
     else
         echo "[NOT PASSED!] ${FUNCNAME[0]}"
@@ -220,7 +220,7 @@ EOF
     expect=('{"keyone":"valueone"}' '{"keytwo":"valuetwo"}' "three")
     exit_code=$?
 
-    if [ $exit_code -eq 0 ] && [[ "${expect[@]}" == "${mykey[@]}" ]]; then
+    if [ $exit_code -eq $NO_ERROR ] && [[ "${expect[@]}" == "${mykey[@]}" ]]; then
         echo "[OK] ${FUNCNAME[0]}: got 'mykey' set to '${mykey[@]}'"
     else
         echo "[NOT PASSED!] ${FUNCNAME[0]}"
