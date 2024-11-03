@@ -2,6 +2,23 @@
 
 source unmarshal.sh
 
+test_jq_present() {
+    # Setup
+    cat > doc.json << EOF
+    null
+EOF
+
+    got=$(unmarshal doc.json)
+    exit_code=$?
+
+    if [ $exit_code -eq $ERROR_MISSING_JQ ]; then
+        echo "$got"
+        exit $ERROR_MISSING_JQ # Stop the test, as Jq is required
+    fi
+    # Clean up
+    unset exit_code got
+}
+
 test_unsupported_type_null() {
     # Setup
     cat > doc.json << EOF
@@ -213,6 +230,7 @@ EOF
     unset exit_code got expect
 }
 
+test_jq_present
 test_unsupported_type_null
 test_unsupported_type_string
 test_unsupported_type_number

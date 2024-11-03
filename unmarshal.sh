@@ -2,9 +2,11 @@
 
 ERROR_UNSUPPORTED_DOCUMENT_TYPE=1
 ERROR_UNSUPPORTED_PROPERTY_TYPE=2
+ERROR_MISSING_JQ=100
 
 unmarshal() {
     local document="$1"
+    require_jq
 
     # If it's not a JSON object, exit
     document_type=$(jq -r '. | type' "$document")
@@ -38,4 +40,11 @@ unmarshal() {
             ;;
         esac
     done
+}
+
+require_jq() {
+    if [[ "$(which jq)" == "" ]]; then
+        echo "Jq is required to run 'unmarshal.sh'"
+        exit $ERROR_MISSING_JQ
+    fi
 }
